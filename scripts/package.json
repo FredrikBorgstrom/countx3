@@ -1,0 +1,10 @@
+{
+	"name": "@countx3/scripts",
+	"private": true,
+	"type": "module",
+	"dependencies": {
+		"@countx3/api": "workspace:*",
+		"@countx3/db": "workspace:*",
+		"@countx3/sdk": "workspace:*"
+	}
+}

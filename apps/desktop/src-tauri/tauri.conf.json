@@ -1,0 +1,27 @@
+{
+	"$schema": "https://schema.tauri.app/config/2",
+	"productName": "countx3",
+	"version": "0.1.0",
+	"identifier": "com.countx3.desktop",
+	"build": {
+		"frontendDist": "../../web/build",
+		"devUrl": "http://localhost:5173",
+		"beforeDevCommand": "bun ../../scripts/dev.ts",
+		"beforeBuildCommand": "bun run --cwd ../web build"
+	},
+	"app": {
+		"windows": [{ "title": "countx3", "width": 1200, "height": 800, "minWidth": 380, "minHeight": 520 }],
+		"security": { "csp": null }
+	},
+	"bundle": {
+		"active": true,
+		"targets": "all",
+		"icon": [
+			"icons/32x32.png",
+			"icons/128x128.png",
+			"icons/128x128@2x.png",
+			"icons/icon.icns",
+			"icons/icon.ico"
+		]
+	}
+}

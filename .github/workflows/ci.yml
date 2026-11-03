@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:18
+        env:
+          POSTGRES_PASSWORD: postgres
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      ADMIN_DATABASE_URL: postgres://postgres:postgres@localhost/postgres
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.4.4
+      - run: sudo apt-get update && sudo apt-get install -y postgresql-client
+      - run: bun install --frozen-lockfile
+      - run: bash scripts/setup_local_db.sh
+      - run: bun run lint
+      - run: bun run typecheck
+      - run: bun test
+      - run: bun run --cwd apps/web build

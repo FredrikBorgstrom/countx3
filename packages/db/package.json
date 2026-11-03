@@ -1,0 +1,20 @@
+{
+	"name": "@countx3/db",
+	"version": "0.0.0",
+	"private": true,
+	"type": "module",
+	"exports": {
+		".": "./src/index.ts"
+	},
+	"scripts": {
+		"generate": "drizzle-kit generate",
+		"migrate": "bun src/migrate.ts"
+	},
+	"dependencies": {
+		"@countx3/core": "workspace:*",
+		"drizzle-orm": "0.45.4"
+	},
+	"devDependencies": {
+		"drizzle-kit": "0.31.11"
+	}
+}

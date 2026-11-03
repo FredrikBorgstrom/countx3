@@ -1,0 +1,17 @@
+{
+	"version": "0.0.1",
+	"configurations": [
+		{
+			"name": "api",
+			"runtimeExecutable": "bun",
+			"runtimeArgs": ["--cwd", "apps/api", "src/main.ts"],
+			"port": 8787
+		},
+		{
+			"name": "web",
+			"runtimeExecutable": "bun",
+			"runtimeArgs": ["run", "--cwd", "apps/web", "dev", "--", "--port", "5173", "--strictPort"],
+			"port": 5173
+		}
+	]
+}

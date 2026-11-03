@@ -1,0 +1,14 @@
+node_modules/
+dist/
+build/
+.svelte-kit/
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+coverage/
+apps/desktop/src-tauri/target/
+apps/desktop/src-tauri/gen/
+apps/web/src/lib/paraglide/
+apps/mobile/ios/build/

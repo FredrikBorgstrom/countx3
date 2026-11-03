@@ -1,0 +1,22 @@
+{
+	"name": "@countx3/mobile",
+	"version": "0.1.0",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"build:web": "bun run --cwd ../web build",
+		"sync": "bun run build:web && cap sync",
+		"ios": "bun run sync && cap run ios",
+		"android": "bun run sync && cap run android && adb reverse tcp:8787 tcp:8787",
+		"open:ios": "cap open ios",
+		"open:android": "cap open android"
+	},
+	"dependencies": {
+		"@capacitor/android": "8.6.0",
+		"@capacitor/core": "8.6.0",
+		"@capacitor/ios": "8.6.0"
+	},
+	"devDependencies": {
+		"@capacitor/cli": "8.6.0"
+	}
+}

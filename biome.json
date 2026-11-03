@@ -1,0 +1,54 @@
+{
+	"$schema": "https://biomejs.dev/schemas/2.6.4/schema.json",
+	"files": {
+		"includes": [
+			"**",
+			"!**/node_modules",
+			"!**/dist",
+			"!**/build",
+			"!**/.svelte-kit",
+			"!apps/mobile/ios",
+			"!apps/mobile/android",
+			"!apps/desktop/src-tauri/target",
+			"!apps/desktop/src-tauri/gen",
+			"!packages/db/drizzle/meta",
+			"!apps/web/src/lib/paraglide",
+			"!**/*.svelte",
+			"!**/*.svg",
+			"!apps/desktop/src-tauri/icons",
+			"!docs/PLAN.md"
+		]
+	},
+	"formatter": {
+		"indentStyle": "tab",
+		"lineWidth": 110
+	},
+	"javascript": {
+		"formatter": {
+			"quoteStyle": "single",
+			"semicolons": "always"
+		}
+	},
+	"linter": {
+		"rules": {
+			"style": {
+				"noNonNullAssertion": "off"
+			},
+			"complexity": {
+				"useMathMinMax": "off"
+			}
+		}
+	},
+	"overrides": [
+		{
+			"includes": ["**/*.test.ts"],
+			"linter": {
+				"rules": {
+					"suspicious": {
+						"noExplicitAny": "off"
+					}
+				}
+			}
+		}
+	]
+}

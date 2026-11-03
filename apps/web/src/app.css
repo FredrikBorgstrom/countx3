@@ -1,0 +1,236 @@
+:root {
+	--bg: #f7f7f5;
+	--surface: #ffffff;
+	--surface-2: #f0efec;
+	--text: #1d1d1b;
+	--muted: #6b6a66;
+	--border: #e2e0db;
+	--accent: #1f5f4a;
+	--accent-text: #ffffff;
+	--danger: #b3261e;
+	--warning: #8a5a00;
+	--agent: #5b3fa6;
+	--radius: 10px;
+	--shadow: 0 1px 2px rgb(0 0 0 / 0.06);
+	color-scheme: light dark;
+	font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+	font-size: 15px;
+	line-height: 1.45;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--bg: #141413;
+		--surface: #1c1c1a;
+		--surface-2: #252522;
+		--text: #ecebe7;
+		--muted: #a09e98;
+		--border: #33322f;
+		--accent: #5fbf98;
+		--accent-text: #0d1f18;
+		--danger: #ff8a80;
+		--warning: #f0b84a;
+		--agent: #b79cff;
+	}
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	background: var(--bg);
+	color: var(--text);
+	/* Room for notches and home indicators when running inside Capacitor. */
+	padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom)
+		env(safe-area-inset-left);
+}
+
+h1,
+h2,
+h3 {
+	line-height: 1.2;
+	margin: 0 0 0.75rem;
+}
+
+h1 {
+	font-size: 1.5rem;
+}
+
+h2 {
+	font-size: 1.15rem;
+}
+
+a {
+	color: var(--accent);
+}
+
+button,
+input,
+select,
+textarea {
+	font: inherit;
+	color: inherit;
+}
+
+input,
+select,
+textarea {
+	background: var(--surface);
+	border: 1px solid var(--border);
+	border-radius: 8px;
+	padding: 0.45rem 0.6rem;
+	min-width: 0;
+}
+
+/* iOS zooms into focused fields with text under 16px. */
+@media (pointer: coarse) {
+	input,
+	select,
+	textarea {
+		font-size: 16px;
+	}
+}
+
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+button:focus-visible {
+	outline: 2px solid var(--accent);
+	outline-offset: 1px;
+}
+
+button {
+	border: 1px solid var(--border);
+	background: var(--surface);
+	border-radius: 8px;
+	padding: 0.45rem 0.9rem;
+	cursor: pointer;
+}
+
+button.primary {
+	background: var(--accent);
+	border-color: var(--accent);
+	color: var(--accent-text);
+	font-weight: 600;
+}
+
+button.danger {
+	color: var(--danger);
+}
+
+button:disabled {
+	opacity: 0.55;
+	cursor: not-allowed;
+}
+
+.card {
+	background: var(--surface);
+	border: 1px solid var(--border);
+	border-radius: var(--radius);
+	box-shadow: var(--shadow);
+	padding: 1rem 1.1rem;
+}
+
+.stack {
+	display: grid;
+	/* minmax(0, …) lets wide tables scroll inside .table-wrap instead of widening the page on phones. */
+	grid-template-columns: minmax(0, 1fr);
+	gap: 1rem;
+}
+
+.row {
+	display: flex;
+	gap: 0.6rem;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.muted {
+	color: var(--muted);
+}
+
+.num {
+	font-variant-numeric: tabular-nums;
+	text-align: right;
+	white-space: nowrap;
+}
+
+.error {
+	color: var(--danger);
+}
+
+.nowrap {
+	white-space: nowrap;
+}
+
+.badge {
+	display: inline-block;
+	font-size: 0.75rem;
+	padding: 0.1rem 0.5rem;
+	border-radius: 999px;
+	background: var(--surface-2);
+	color: var(--muted);
+	white-space: nowrap;
+}
+
+.badge.agent {
+	color: var(--agent);
+	background: color-mix(in srgb, var(--agent) 14%, transparent);
+}
+
+.badge.ok {
+	color: var(--accent);
+	background: color-mix(in srgb, var(--accent) 14%, transparent);
+}
+
+.badge.draft {
+	color: var(--warning);
+	background: color-mix(in srgb, var(--warning) 14%, transparent);
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+th,
+td {
+	padding: 0.45rem 0.5rem;
+	border-bottom: 1px solid var(--border);
+	text-align: left;
+	vertical-align: top;
+}
+
+th {
+	font-size: 0.8rem;
+	font-weight: 600;
+	color: var(--muted);
+}
+
+.table-wrap {
+	overflow-x: auto;
+}
+
+label {
+	display: grid;
+	gap: 0.25rem;
+	font-size: 0.85rem;
+	color: var(--muted);
+}
+
+code,
+pre {
+	font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+	font-size: 0.85rem;
+}
+
+pre {
+	background: var(--surface-2);
+	border-radius: 8px;
+	padding: 0.75rem;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	word-break: break-all;
+}

@@ -1,0 +1,35 @@
+{
+	"name": "countx3",
+	"private": true,
+	"license": "AGPL-3.0-only",
+	"repository": "github:FredrikBorgstrom/countx3",
+	"type": "module",
+	"workspaces": [
+		"apps/*",
+		"packages/*",
+		"packages/jurisdictions/*",
+		"scripts"
+	],
+	"scripts": {
+		"setup": "bash scripts/setup.sh",
+		"dev": "bun scripts/dev.ts",
+		"desktop": "bun run --cwd apps/desktop dev",
+		"ios": "bun run --cwd apps/mobile ios",
+		"android": "bun run --cwd apps/mobile android",
+		"dev:api": "bun --filter @countx3/api dev",
+		"dev:web": "bun --filter @countx3/web dev",
+		"db:migrate": "bun --filter @countx3/db migrate",
+		"db:generate": "bun --filter @countx3/db generate",
+		"db:setup:local": "bash scripts/setup_local_db.sh",
+		"test": "bun test",
+		"typecheck": "tsc -p tsconfig.json --noEmit && bun --filter @countx3/web check",
+		"lint": "biome check .",
+		"format": "biome format --write .",
+		"db:seed:dev": "bun scripts/seed_dev.ts"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.6.4",
+		"@types/bun": "1.4.4",
+		"typescript": "6.0.3"
+	}
+}
